@@ -8,7 +8,7 @@ const MoviesDetails = () => {
   const [moviesDetails, setMoviesDetails] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-  const turningBack = location.state?.from ?? `/movies`;
+  const turningBack = location.state?.from ?? `/ `;
 
   useEffect(() => {
     fetchDetailsMovie(movieId).then(respMovieId => {
@@ -57,10 +57,10 @@ const MoviesDetails = () => {
         <h5>Additional information</h5>
         <Container>
           <li>
-            <Links to="cast">Cast</Links>
+            <Links to="cast" state= {{from: turningBack}}>Cast</Links>
           </li>
           <li>
-            <Links to="reviews">Reviews</Links>
+            <Links to="reviews" state= {{from: turningBack}}>Reviews</Links>
           </li>
         </Container>
         <Suspense fallback={<div>Loading...</div>}>

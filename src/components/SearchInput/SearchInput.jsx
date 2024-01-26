@@ -15,7 +15,7 @@ export const SearchInput = ({ onSearch }) => {
       return alert('Please enter the name of the movie');
     }
     onSearch(query);
-    setQuery('');
+    // setQuery('');
   };
   return (
     <div>

@@ -1,4 +1,4 @@
-import ListMovies from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { fetchTrending } from 'service/serviceAPI';
@@ -30,7 +30,7 @@ const Home = () => {
         >
           Trending today
         </h2>
-        <ListMovies movies={movies} />
+        <MoviesList movies={movies} />
         {loading && <Loader />}
       </div>
     </>

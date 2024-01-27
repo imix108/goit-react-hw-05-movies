@@ -1,22 +1,27 @@
-import PropTypes from 'prop-types';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Button } from './SearchInput.styled';
+import PropTypes from 'prop-types';
 
-export const SearchInput = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+export const SearchInput = ({ onSearch, value }) => {
+  const [query, setQuery] = useState(value);
+
+  useEffect(() => {
+    setQuery(value);
+  }, [value]);
+
   const changeQuery = e => {
     setQuery(e.target.value.toLowerCase());
   };
+
   const handleSubmit = e => {
     e.preventDefault();
     if (!query) {
       return alert('Please enter the name of the movie');
     }
     onSearch(query);
-    // setQuery('');
   };
+
   return (
     <div>
       <form
@@ -29,6 +34,7 @@ export const SearchInput = ({ onSearch }) => {
       >
         <input
           type="text"
+          autoComplete="off"
           placeholder="Movie Name"
           name="query"
           value={query}
@@ -41,7 +47,10 @@ export const SearchInput = ({ onSearch }) => {
     </div>
   );
 };
-export default SearchInput;
+
 SearchInput.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  value: PropTypes.string // Define the prop type for value
 };
+
+export default SearchInput;

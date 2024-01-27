@@ -23,7 +23,7 @@ const Movies = () => {
         setMovies(respMovies.results);
       })
       .catch(error => setError(error))
-      .finally(loading => setLoading(false));
+      .finally(() => setLoading(false));
   }, [movieName]);
   const handleOnSubmit = query => {
     const changeParams = query !== '' ? { query } : {};
